@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane prefHeight="720.0" prefWidth="1130.0" style="-fx-background-color: lightgreen;" stylesheets="@/style/style.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="holiday.controller.subcontroller.Statement">
+   <children>
+      <HBox layoutX="14.0" layoutY="558.0" styleClass="statement_hbox">
+         <children>
+             <Button fx:id="Statement_Button_Coming" alignment="CENTER_RIGHT" contentDisplay="CENTER" onAction="#Statement_Button_Coming_OnClicked" styleClass="statement_button" text="Создать приход" />
+             <Button fx:id="Statement_Button_Out" onAction="#Statement_Button_Out_OnClicked" styleClass="statement_button" text="Создать расход" />
+             <Button fx:id="Statement_Button_Oil" onAction="#Statement_Button_Oil_OnClicked" styleClass="statement_button" text="Оформить бензин" />
+             <Button fx:id="Statement_Button_StatementOut" onAction="#Statement_Button_StatementOut_OnClicked" styleClass="statement_button" text="Сдать ведомость" />
+             <Button fx:id="Statement_Button_StatementList" onAction="#Statement_Button_StatementList_OnClicked" styleClass="statement_button" text="Архив ведомостей" />
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

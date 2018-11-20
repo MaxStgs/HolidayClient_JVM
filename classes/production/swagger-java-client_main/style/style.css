@@ -1,0 +1,36 @@
+/*
+    Statement.fxml
+*/
+
+.statement_button {
+    -fx-background-image: url('../icons/icon-holiday.png');
+    -fx-background-size: 64px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-color: rgba(255, 255, 255, 0);
+    -fx-padding: 85px 0 0 0;
+    -fx-start-margin: 15px;
+    -fx-pref-height: 150px;
+    -fx-pref-width: 96px;
+    /*-fx-alignment: center;*/
+    -fx-text-alignment: center;
+    -fx-wrap-text: true;
+    -fx-font-size: 16px;
+}
+
+.statement_hbox {
+    -fx-spacing: 10;
+    -fx-pref-height: 150px;
+    -fx-pref-width: 512px;
+}
+
+#Statement_Button_Coming {
+    -fx-background-image: url('../icons/icon-coming.png');
+}
+
+#Statement_Button_Out {
+    -fx-background-image: url('../icons/icon-out.png');
+}
+
+#Statement_Button_Oil {
+    -fx-background-image: url('../icons/icon-out.png');
+}

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="holiday.controller.Auth">
+   <columnConstraints>
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+   </rowConstraints>
+   <children>
+      <VBox prefHeight="300.0" prefWidth="300.0">
+         <children>
+            <Label prefHeight="17.0" prefWidth="353.0" text="Логин">
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+               <font>
+                  <Font size="16.0" />
+               </font></Label>
+            <TextField fx:id="Auth_TextField_Login">
+               <font>
+                  <Font size="16.0" />
+               </font></TextField>
+            <Label prefHeight="17.0" prefWidth="320.0" text="Пароль">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <PasswordField fx:id="Auth_TextField_Password" prefWidth="300.0">
+               <font>
+                  <Font size="16.0" />
+               </font></PasswordField>
+            <Pane prefHeight="137.0" prefWidth="300.0">
+               <children>
+                  <Button fx:id="AuthButtonAuth" alignment="CENTER" contentDisplay="TOP" layoutY="49.0" mnemonicParsing="false" onMouseClicked="#AuthButtonAuth_Clicked" prefHeight="40.0" prefWidth="300.0" text="Войти" textOverrun="CLIP">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+               </children>
+            </Pane>
+            <Label fx:id="Auth_Label_Output" alignment="CENTER" contentDisplay="TOP" prefHeight="25.0" prefWidth="Infinity" text="Very Long Data for Output Text" textFill="RED">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+   </children>
+</GridPane>
