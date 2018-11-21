@@ -1,5 +1,6 @@
 package holiday;
 
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -11,17 +12,21 @@ import java.io.IOException;
 
 public class Singleton {
 
+    private static boolean debugLevelOfAccess = true;
+    public static String levelOfAccess;
+
     private Stage primaryStage;
     public Pane Workspace;
 
     public static Singleton singleton;
 
-    Singleton(Stage primaryStage) {
+    Singleton(Stage primaryStage, String levelOfAccess) {
         singleton = this;
         this.primaryStage = primaryStage;
+        Singleton.levelOfAccess = levelOfAccess;
+        LoadSceneByName("General");
 
         try {
-            LoadSceneByName("Auth");
             this.primaryStage.getIcons().add(new Image("icons/icon-holiday.png"));
 
         } catch (Exception e) {
@@ -31,18 +36,35 @@ public class Singleton {
         primaryStage.show();
     }
 
-    public boolean LoadSceneByName(String name) {
-        Parent root;
+    Singleton(Stage primaryStage) {
+        singleton = this;
+        this.primaryStage = primaryStage;
+        LoadSceneByName("Auth");
+
         try {
-            root = FXMLLoader.load(getClass().getResource("../view/" + name + ".fxml"));
-        } catch (IOException e) {
-            e.printStackTrace();
-            return false;
+            this.primaryStage.getIcons().add(new Image("icons/icon-holiday.png"));
+
         } catch (Exception e) {
             e.printStackTrace();
-            return false;
+            return;
         }
-        primaryStage.setScene(new Scene(root, 1280, 720));
+        primaryStage.show();
+    }
+
+    public boolean LoadSceneByName(final String name) {
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                Parent root;
+                try {
+                    root = FXMLLoader.load(getClass().getResource("../view/" + name + ".fxml"));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    return;
+                }
+                primaryStage.setScene(new Scene(root, 1280, 720));
+            }
+        });
         return true;
     }
 
@@ -50,7 +72,8 @@ public class Singleton {
         Parent root;
         try {
             root = FXMLLoader.load(getClass().getResource("../view/subform/" + name + ".fxml"));
-            primaryStage.setTitle("Page" + name);
+            primaryStage.setTitle("Page" + name +
+                    (debugLevelOfAccess ? " with levelOfAccess: " + levelOfAccess : ""));
         } catch (IOException e) {
             e.printStackTrace();
             return false;
