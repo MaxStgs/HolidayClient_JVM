@@ -2,11 +2,13 @@ package holiday.controller;
 
 import holiday.Singleton;
 import io.swagger.client.ApiCallback;
+import io.swagger.client.ApiClient;
 import io.swagger.client.ApiException;
 import io.swagger.client.api.SecurityApi;
 import io.swagger.client.model.LoginDetails;
 import io.swagger.client.model.PostLoginDetails;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -23,40 +25,7 @@ public class Auth {
     public TextField Auth_TextField_Login;
 
     public void AuthButtonAuth_Clicked(MouseEvent mouseEvent) {
-        String login = Auth_TextField_Login.getText();
-        String password = Auth_TextField_Password.getText();
-
-        if(login.length() == 0 || password.length() == 0) {
-            SetNewOutputMessage("Login or/and password is empty");
-            return;
-        }
-        DisableOutputMessage();
-
-        TryLogin(login, password);
-        /*
-        LoginDetails loginDetails = new LoginDetails();
-        SecurityApi securityApi = new SecurityApi();
-        try {
-            PostLoginDetails postLoginDetails = new PostLoginDetails();
-            postLoginDetails.setLogin(login);
-            postLoginDetails.setPassword(password);
-            loginDetails = securityApi.loginPost(postLoginDetails);
-        } catch (ApiException e) {
-            switch (e.getCode()) {
-                case 401:
-                case 403:
-                case 404:
-                    SetNewOutputMessage("Not correct email/password or not found");
-                    return;
-                case 500:
-                    SetNewOutputMessage("Server Error 500");
-                    System.out.print(e.getResponseBody());
-            }
-        }
-        if(loginDetails != null) {
-            Singleton.singleton.LoadSceneByName("General");
-        }
-        */
+        OnClicked();
     }
 
     private void SetNewOutputMessage(final String message) {
@@ -80,7 +49,11 @@ public class Auth {
     }
 
     private void TryLogin(String login, String password) {
+        /*ApiClient apiClient = new ApiClient();
+        apiClient.setBasePath("http://holidayapi.ekbpenz54.mykeenetic.ru");*/
+
         SecurityApi securityApi = new SecurityApi();
+//        securityApi.setApiClient(apiClient);
 
         PostLoginDetails postLoginDetails = new PostLoginDetails();
         postLoginDetails.setLogin(login);
@@ -136,5 +109,46 @@ public class Auth {
             e.printStackTrace();
             SetNewOutputMessage("Application Error");
         }
+    }
+
+    public void onEnter(ActionEvent actionEvent) {
+        OnClicked();
+    }
+
+    private void OnClicked() {
+        String login = Auth_TextField_Login.getText();
+        String password = Auth_TextField_Password.getText();
+
+        if(login.length() == 0 || password.length() == 0) {
+            SetNewOutputMessage("Login or/and password is empty");
+            return;
+        }
+        DisableOutputMessage();
+
+        TryLogin(login, password);
+        /*
+        LoginDetails loginDetails = new LoginDetails();
+        SecurityApi securityApi = new SecurityApi();
+        try {
+            PostLoginDetails postLoginDetails = new PostLoginDetails();
+            postLoginDetails.setLogin(login);
+            postLoginDetails.setPassword(password);
+            loginDetails = securityApi.loginPost(postLoginDetails);
+        } catch (ApiException e) {
+            switch (e.getCode()) {
+                case 401:
+                case 403:
+                case 404:
+                    SetNewOutputMessage("Not correct email/password or not found");
+                    return;
+                case 500:
+                    SetNewOutputMessage("Server Error 500");
+                    System.out.print(e.getResponseBody());
+            }
+        }
+        if(loginDetails != null) {
+            Singleton.singleton.LoadSceneByName("General");
+        }
+        */
     }
 }

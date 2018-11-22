@@ -24,7 +24,7 @@
             <Label prefHeight="17.0" prefWidth="353.0" text="Логин" />
             <TextField fx:id="Auth_TextField_Login" />
             <Label prefHeight="17.0" prefWidth="320.0" text="Пароль" />
-            <PasswordField fx:id="Auth_TextField_Password" prefWidth="300.0" />
+            <PasswordField fx:id="Auth_TextField_Password" onAction="#onEnter" prefWidth="300.0" />
             <Button fx:id="AuthButtonAuth" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#AuthButtonAuth_Clicked" prefHeight="40.0" prefWidth="300.0" text="Войти" textOverrun="CLIP">
                <opaqueInsets>
                   <Insets />
