@@ -1,12 +1,14 @@
 package holiday;
 
 import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 import java.io.IOException;
 
@@ -23,6 +25,12 @@ public class Singleton {
     Singleton(Stage primaryStage, String levelOfAccess) {
         singleton = this;
         this.primaryStage = primaryStage;
+
+        this.primaryStage.setOnCloseRequest(event -> {
+            Platform.exit();
+            System.exit(0);
+        });
+
         Singleton.levelOfAccess = levelOfAccess;
         LoadSceneByName("General");
 
@@ -39,6 +47,12 @@ public class Singleton {
     Singleton(Stage primaryStage) {
         singleton = this;
         this.primaryStage = primaryStage;
+
+        this.primaryStage.setOnCloseRequest(event -> {
+            Platform.exit();
+            System.exit(0);
+        });
+
         LoadSceneByName("Auth");
 
         try {
