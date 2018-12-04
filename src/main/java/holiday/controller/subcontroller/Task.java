@@ -19,6 +19,8 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.util.converter.FormatStringConverter;
+import javafx.util.converter.LocalDateStringConverter;
 
 import java.net.URL;
 import java.util.List;
@@ -30,6 +32,11 @@ public class Task implements Initializable {
     public VBox Task_VBox_List;
     public AnchorPane Task_Pane;
     public ChoiceBox Task_ChoiceBox_TaskChoice;
+    public ProgressBar Task_ProgressBar_TaskProgress;
+    public ComboBox Task_ComboBox_TaskWorker;
+    public TextArea Task_TextArea_TaskDescription;
+    public DatePicker Task_DatePicker_TaskDate;
+    public TextField Task_TextField_TaskName;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -134,32 +141,59 @@ public class Task implements Initializable {
 
     private void taskChoiceUpdate(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
         String[] values = Task_ChoiceBox_TaskChoice.getItems().get(newValue.intValue()).toString().split(":");
-        fillFormData(Integer.valueOf(values[0]));
+        int taskId = Integer.valueOf(values[0]);
+
+        TaskDetails details;
+        TasksApi tasksApi = new TasksApi();
+        try {
+            details = tasksApi.tasksTaskIdGet(taskId);
+        } catch (ApiException e) {
+            System.out.println("Task.taskChoiceUpdate.tasksApi.tasksTaskIdGet call Error");
+            return;
+        }
+        fillTaskData(details);
+
+
+
+//        ListOfSubtasks list;
+//        SubtasksApi subtasksApi = new SubtasksApi();
+//        try {
+//            list = subtasksApi.tasksTaskIdSubtasksGet(taskId);
+//        } catch (ApiException e) {
+//            e.printStackTrace();
+//            return;
+//        }
+//        fillSubtaskData(list);
     }
 
-    private void fillFormData(int taskId) {
-        TasksApi tasksApi = new TasksApi();
-        TaskDetails taskDetails = null;
-        try {
-            taskDetails = tasksApi.tasksTaskIdGet(taskId);
-        } catch (ApiException e) {
-            e.printStackTrace();
-        }
+    private void fillTaskData(TaskDetails details) {
+        // TODO: After swagger1update. Set text to details.getName();
+        Task_TextField_TaskName.setText("It is name");
+        Task_TextArea_TaskDescription.setText(details.getDescription());
+        // TODO: Make list of Workers
+        //Task_ChoiceBox_TaskChoice.setItems();
+        // TODO: Make Date
+        //Task_DatePicker_TaskDate.setConverter(new LocalDateStringConverter(details.getDate()));
 
-        SubtasksApi subtasksApi = new SubtasksApi();
-        ListOfSubtasks list = null;
-        try {
-            list = subtasksApi.tasksTaskIdSubtasksGet(taskId);
-        } catch (ApiException e) {
-            e.printStackTrace();
-        }
+    }
 
+    private void fillSubtaskData(ListOfSubtasks list) {
         clearSubtasks();
 
         for(int i = 0; i < list.getList().size(); i++) {
-           SubtaskDetails details = list.getList().get(i);
-           // TODO: After swagger1update. Change 'Here must be name' to details.getName()
-           AddNewTask("Here must be name", details.getDescription(), details.isStatus(), details.getId());
+            SubtaskDetails details = list.getList().get(i);
+            // TODO: After swagger1update. Change 'Here must be name' to details.getName()
+            AddNewTask("Here must be name", details.getDescription(), details.isStatus(), details.getId());
         }
+    }
+
+
+    public void Task_AddSubtask(ActionEvent actionEvent) {
+        TasksApi api = new TasksApi();
+        api.d
+    }
+
+    public void Task_DeleteTask(ActionEvent actionEvent) {
+
     }
 }
