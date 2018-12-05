@@ -4,23 +4,14 @@ import io.swagger.client.ApiCallback;
 import io.swagger.client.ApiException;
 import io.swagger.client.api.SubtasksApi;
 import io.swagger.client.api.TasksApi;
-import io.swagger.client.model.ListOfSubtasks;
-import io.swagger.client.model.ListOfTasks;
-import io.swagger.client.model.SubtaskDetails;
-import io.swagger.client.model.TaskDetails;
-import javafx.beans.value.ChangeListener;
+import io.swagger.client.model.*;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.event.EventTarget;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.util.converter.FormatStringConverter;
-import javafx.util.converter.LocalDateStringConverter;
 
 import java.net.URL;
 import java.util.List;
@@ -38,6 +29,8 @@ public class Task implements Initializable {
     public DatePicker Task_DatePicker_TaskDate;
     public TextField Task_TextField_TaskName;
 
+    private int taskId;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         Task_ChoiceBox_TaskChoice
@@ -49,15 +42,15 @@ public class Task implements Initializable {
 
         clearSubtasks();
 
-        AddNewTask("Купить деталей", "Купить деталей для машины в специальном магазине для животных", true, -1);
-        AddNewTask("Принести детали", "Task_02", false, -2);
-        AddNewTask("Установить", "Task_03", true, -3);
+        addSubtask("Купить деталей", "Купить деталей для машины в специальном магазине для животных", true, -1);
+        addSubtask("Принести детали", "Task_02", false, -2);
+        addSubtask("Установить", "Task_03", true, -3);
 
         for(int i = 0; i < 15; i++)
-            AddNewTask(String.valueOf(i), "Task_" + i, true, i);
+            addSubtask(String.valueOf(i), "Task_" + i, true, i);
     }
 
-    private void AddNewTask(String taskName, String taskDescription, Boolean taskStatus, int Id) {
+    private void addSubtask(String taskName, String taskDescription, Boolean taskStatus, int Id) {
         HBox hBox = new HBox();
 
         Label labelName = new Label();
@@ -93,7 +86,8 @@ public class Task implements Initializable {
     }
 
     private void UpdateSubtask() {
-        //return true;
+        SubtasksApi api = new SubtasksApi();
+        // Todo: After swagger1update implement UpdateSubtask
     }
 
     private void initListOfTasks() {
@@ -146,24 +140,26 @@ public class Task implements Initializable {
         TaskDetails details;
         TasksApi tasksApi = new TasksApi();
         try {
+            this.taskId = taskId;
             details = tasksApi.tasksTaskIdGet(taskId);
         } catch (ApiException e) {
             System.out.println("Task.taskChoiceUpdate.tasksApi.tasksTaskIdGet call Error");
+            this.taskId = -1;
             return;
         }
         fillTaskData(details);
 
 
 
-//        ListOfSubtasks list;
-//        SubtasksApi subtasksApi = new SubtasksApi();
-//        try {
-//            list = subtasksApi.tasksTaskIdSubtasksGet(taskId);
-//        } catch (ApiException e) {
-//            e.printStackTrace();
-//            return;
-//        }
-//        fillSubtaskData(list);
+        ListOfSubtasks list;
+        SubtasksApi subtasksApi = new SubtasksApi();
+        try {
+            list = subtasksApi.tasksTaskIdSubtasksGet(taskId);
+        } catch (ApiException e) {
+            e.printStackTrace();
+            return;
+        }
+        fillSubtaskData(list);
     }
 
     private void fillTaskData(TaskDetails details) {
@@ -183,17 +179,51 @@ public class Task implements Initializable {
         for(int i = 0; i < list.getList().size(); i++) {
             SubtaskDetails details = list.getList().get(i);
             // TODO: After swagger1update. Change 'Here must be name' to details.getName()
-            AddNewTask("Here must be name", details.getDescription(), details.isStatus(), details.getId());
+            addSubtask("Here must be name", details.getDescription(), details.isStatus(), details.getId());
         }
     }
 
-
     public void Task_AddSubtask(ActionEvent actionEvent) {
-        TasksApi api = new TasksApi();
-        api.d
+        SubtasksApi api = new SubtasksApi();
+        // Todo: Add Subtask haven't API for this
+
     }
 
     public void Task_DeleteTask(ActionEvent actionEvent) {
+        TasksApi api = new TasksApi();
+        // Todo: Delete task haven't API for this
+    }
 
+    public void Task_UpdateTask(ActionEvent actionEvent) {
+        TasksApi api = new TasksApi();
+
+        PutTaskDetails details = new PutTaskDetails();
+        //details.setIdWorker(Integer.parseInt(Task_ComboBox_TaskWorker.getValue().toString()));
+
+        try {
+            api.tasksTaskIdPutAsync(taskId, details, new ApiCallback<Void>() {
+                @Override
+                public void onFailure(ApiException e, int statusCode, Map<String, List<String>> responseHeaders) {
+
+                }
+
+                @Override
+                public void onSuccess(Void result, int statusCode, Map<String, List<String>> responseHeaders) {
+
+                }
+
+                @Override
+                public void onUploadProgress(long bytesWritten, long contentLength, boolean done) {
+
+                }
+
+                @Override
+                public void onDownloadProgress(long bytesRead, long contentLength, boolean done) {
+
+                }
+            });
+        } catch (ApiException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -45,7 +45,7 @@
                 <RowConstraints maxHeight="309.0" minHeight="10.0" prefHeight="309.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <ComboBox fx:id="Task_ComboBox_TaskWorker" prefHeight="25.0" prefWidth="271.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+                  <ComboBox fx:id="Task_ComboBox_TaskWorker" onAction="#Task_UpdateTask" prefHeight="25.0" prefWidth="271.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP" />
                   <Label text="Описание задачи" GridPane.columnIndex="3">
                      <font>
                         <Font size="16.0" />
@@ -54,7 +54,7 @@
                         <Insets left="15.0" />
                      </padding>
                   </Label>
-                  <TextArea fx:id="Task_TextArea_TaskDescription" prefHeight="79.0" prefWidth="495.0" GridPane.columnIndex="3" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+                  <TextArea fx:id="Task_TextArea_TaskDescription" onDragDetected="#Task_UpdateTask" prefHeight="79.0" prefWidth="495.0" GridPane.columnIndex="3" GridPane.rowIndex="1" GridPane.valignment="TOP" />
                   <Label text="Дата" GridPane.columnIndex="2">
                      <font>
                         <Font size="16.0" />
@@ -63,7 +63,7 @@
                         <Insets left="15.0" />
                      </padding>
                   </Label>
-                  <DatePicker fx:id="Task_DatePicker_TaskDate" prefHeight="25.0" prefWidth="273.0" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+                  <DatePicker fx:id="Task_DatePicker_TaskDate" onAction="#Task_UpdateTask" prefHeight="25.0" prefWidth="273.0" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="TOP" />
                   <Label text="Название задачи">
                      <font>
                         <Font size="16.0" />
@@ -80,7 +80,7 @@
                         <Insets left="15.0" />
                      </padding>
                   </Label>
-                  <TextField fx:id="Task_TextField_TaskName" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+                  <TextField fx:id="Task_TextField_TaskName" onAction="#Task_UpdateTask" GridPane.rowIndex="1" GridPane.valignment="TOP" />
                </children>
             </GridPane>
             <ChoiceBox fx:id="Task_ChoiceBox_TaskChoice" layoutX="11.0" layoutY="14.0" prefHeight="34.0" prefWidth="325.0" styleClass="MaxStgsChoiceBox" />
