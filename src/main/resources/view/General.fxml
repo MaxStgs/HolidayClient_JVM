@@ -32,7 +32,7 @@
             <children>
                    <Button fx:id="General_Button_Task" mnemonicParsing="false" onAction="#General_Button_Task_OnClicked" text="Задачи" GridPane.rowIndex="2" />
                    <Button fx:id="General_Button_Test" mnemonicParsing="false" onAction="#General_Button_Test_OnClicked" text="Саси бибу" GridPane.rowIndex="3" />
-                   <Button mnemonicParsing="false" text="Button" GridPane.rowIndex="4" />
+                   <Button fx:id="General_Button_Cars" mnemonicParsing="false" onAction="#General_Button_Cars_OnClicked" text="Автомобили" GridPane.rowIndex="4" />
                    <Button fx:id="General_Button_Starter" mnemonicParsing="false" onAction="#General_Button_Starter_OnClicked" text="Стартовая страница" GridPane.rowIndex="1" />
                    <Pane maxHeight="Infinity" prefHeight="100.0" prefWidth="150.0" style="-fx-background-color: red;" />
             </children>

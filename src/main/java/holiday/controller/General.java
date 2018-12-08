@@ -29,4 +29,7 @@ public class General implements Initializable {
         Singleton.singleton.LoadSubsceneByName("Statement");
     }
 
+    public void General_Button_Cars_OnClicked(ActionEvent actionEvent) {
+        Singleton.singleton.LoadSubsceneByName("Cars");
+    }
 }
