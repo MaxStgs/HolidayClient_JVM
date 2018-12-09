@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<GridPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@/style/style.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
+   <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="20.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="5.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="20.0" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints minHeight="10.0" percentHeight="5.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" percentHeight="5.0" prefHeight="30.0" vgrow="SOMETIMES" />
+   </rowConstraints>
+   <children>
+       <VBox alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="100.0" styleClass="combinations_vbox" GridPane.columnIndex="1" GridPane.rowIndex="1">
+           <Label text="Открыть задачи" />
+           <Label text="Открыть окно авто" />
+         <Label text="Настройки" />
+         <Label text="О комбинациях" />
+         <Label text="О программном обеспечении" />
+       </VBox>
+       <VBox prefHeight="200.0" prefWidth="100.0" styleClass="combinations_vbox" GridPane.columnIndex="3" GridPane.rowIndex="1">
+           <Label text="Alt + T" />
+           <Label text="Alt + Y" />
+         <Label text="Alt + O" />
+         <Label text="Alt + P" />
+         <Label text="Alt + I" />
+       </VBox>
+   </children>
+</GridPane>

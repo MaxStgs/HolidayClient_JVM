@@ -105,3 +105,11 @@
 .MaxStgsChoiceBox {
     -fx-font-size: 18px;
 }
+
+/*
+    Combinations
+ */
+
+.combinations_vbox{
+    -fx-font-size: 18px;
+}
