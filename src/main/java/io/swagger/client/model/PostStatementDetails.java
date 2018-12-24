@@ -23,9 +23,9 @@ import java.io.IOException;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * Post Statement Details
+ * Post Statements Details
  */
-@Schema(description = "Post Statement Details")
+@Schema(description = "Post Statements Details")
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2018-11-20T18:36:01.976Z[GMT]")public class PostStatementDetails {
 
   @SerializedName("date")

@@ -19,7 +19,9 @@ import io.swagger.client.model.PostOutDetails;
 import io.swagger.client.model.PutOutDetails;
 import org.junit.Test;
 import org.junit.Ignore;
+import org.threeten.bp.OffsetDateTime;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -103,7 +105,18 @@ public class OutsApiTest {
      */
     @Test
     public void outsPostTest() throws ApiException {
-        PostOutDetails body = null;
+        String comments = "comments_example";
+        OffsetDateTime date = OffsetDateTime.now();
+        Float total = 3.4F;
+        File photo = new File("photo_example");
+        Integer idStatement = 56;
+        //comments, date, total, photo, idStatement
+        PostOutDetails body = new PostOutDetails();
+        body.setTotal(total);
+        body.setIdStatement(idStatement);
+        body.setComments(comments);
+        body.setDate(date);
+        body.setPhoto(photo);
         api.outsPost(body);
 
         // TODO: test validations

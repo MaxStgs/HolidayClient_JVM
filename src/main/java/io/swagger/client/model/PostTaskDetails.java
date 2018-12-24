@@ -23,9 +23,9 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * Post Task Details
+ * Post Tasks Details
  */
-@Schema(description = "Post Task Details")
+@Schema(description = "Post Tasks Details")
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2018-11-20T18:36:01.976Z[GMT]")public class PostTaskDetails {
 
   @SerializedName("date")

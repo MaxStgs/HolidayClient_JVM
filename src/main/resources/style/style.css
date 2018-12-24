@@ -38,7 +38,7 @@
 }
 
 /*
-    Statement.fxml
+    Statements.fxml
 */
 
 .statement_button {
@@ -75,35 +75,61 @@
 }
 
 /*
-    Task.fxml
+    Tasks.fxml
  */
 
-#Task_VBox_List > HBox {
-    -fx-padding: 10px 0 10px 10px;
+#Tasks_VBox_List {
+    -fx-spacing: 10px;
 }
 
-#Task_VBox_List > HBox > Label {
-    -fx-font-size: 18px;
+#Tasks_VBox_List > HBox {
+    -fx-spacing: 10px;
+}
+
+#Tasks_VBox_List > HBox > Label {
+    -fx-label-padding: 0 0 0 10px;
+    -fx-font-size: 15px;
     -fx-pref-width: 180px;
 }
 
-#Task_VBox_List > HBox > TextField {
-    -fx-font-size: 18px;
-    -fx-pref-width: 600px;
+#Tasks_VBox_List > HBox > TextField {
+    -fx-font-size: 15px;
+    -fx-pref-width: 350px;
 }
 
-#Task_VBox_List > HBox > CheckBox {
+#Tasks_VBox_List > HBox > CheckBox {
+    -fx-start-margin: 30px;
     -fx-pref-height: 27px;
-    -fx-start-margin: 20px;
+    -fx-scale-x: 1.5;
+    -fx-scale-y: 1.5;
 }
 
+#Tasks_VBox_List > HBox > Button {
+    -fx-pref-width: 150px;
+    -fx-font-size: 15px;
+}
+
+
+/*
+
+    Task.fxml
+
+ */
+
+#Window_Task_GridPane_Root > VBox > Label {
+    -fx-font-size: 18px;
+}
+
+#Window_Task_GridPane_Root > VBox > TextField {
+    -fx-font-size: 15px;
+}
 
 /*
     Usual Elements
  */
 
 .MaxStgsChoiceBox {
-    -fx-font-size: 18px;
+    -fx-font: 18px Serif;
 }
 
 /*
@@ -112,4 +138,60 @@
 
 .combinations_vbox{
     -fx-font-size: 18px;
+}
+
+.list_user {
+    -fx-spacing: 10;
+}
+
+.list_user_hbox {
+    -fx-spacing: 15;
+}
+
+.list_user_title {
+    -fx-font-size: 18px;
+    -fx-pref-width: 350px;
+}
+
+.list_user_phone {
+    -fx-font-size: 18px;
+    -fx-pref-width: 150px;
+}
+
+.list_user_color {
+    -fx-padding: 0 15px 0 0;
+}
+
+/*
+    Coming.fxml
+ */
+
+#Window_Coming_GridPane_Root > VBox > TextField {
+    -fx-font-size: 15px;
+}
+
+/*
+    Out.fxml
+ */
+
+#Window_Out_GridPane_Root > VBox > TextField {
+    -fx-font-size: 15px;
+}
+
+.label-middle {
+    -fx-font-size: 15px;
+}
+
+.button-middle {
+    -fx-font-size: 15px;
+    -fx-pref-width: 200px;
+}
+
+.button-select_file {
+    -fx-font-size: 15px;
+    -fx-pref-width: 125px;
+}
+
+.vbox-list {
+    -fx-spacing: 5px;
 }

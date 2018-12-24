@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.SubScene?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.input.KeyCodeCombination?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="holiday.controller.subcontroller.General">
+   <children>
+      <MenuBar fx:id="General_MenuBar">
+         <menus>
+            <Menu fx:id="MenuBar_Generals" text="_Общее">
+              <items>
+                <MenuItem onAction="#MenuBar_Settings_OnAction" text="_Настройки" visible="false" />
+                  <MenuItem onAction="#MenuBar_Exit_OnAction" text="_Выйти из учетной записи" />
+              </items>
+            </Menu>
+            <Menu fx:id="MenuBar_Orders" mnemonicParsing="false" text="Заказы">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#MenuBar_MakeOrder_OnAction" text="Оформить заказ" />
+                  <MenuItem mnemonicParsing="false" onAction="#MenuBar_Orders_OnAction" text="Прошедшие заказы" />
+              </items>
+            </Menu>
+            <Menu fx:id="MenuBar_Equipments" mnemonicParsing="false" text="Оборудование">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#MenuBar_OpenEquipments_OnAction" text="Список оборудования" />
+                  <MenuItem mnemonicParsing="false" onAction="#MenuBar_AddEquipment_OnAction" text="Добавить оборудование" />
+              </items>
+            </Menu>
+            <Menu fx:id="MenuBar_Statements" text="_Ведомости">
+              <items>
+                  <MenuItem mnemonicParsing="false" onAction="#MenuBar_OpenStatement_OnAction" text="Текущая ведомость" />
+                <MenuItem mnemonicParsing="false" onAction="#MenuBar_MakeComing_OnAction" text="Добавить приход" />
+                  <MenuItem mnemonicParsing="false" onAction="#MenuBar_MakeOut_OnAction" text="Добавить расход" />
+                  <MenuItem mnemonicParsing="false" onAction="#MenuBar_MakeOil_OnAction" text="Добавить расходы на бензин" />
+              </items>
+            </Menu>
+            <Menu fx:id="MenuBar_Tasks" text="_Задачи">
+              <items>
+                <MenuItem onAction="#MenuBar_Task_OpenWindow_OnAction" text="О_ткрыть задачи">
+                     <accelerator>
+                        <KeyCodeCombination alt="DOWN" code="T" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
+                  <MenuItem onAction="#MenuBar_Task_AddTask_OnAction" text="_Добавить задачу" />
+              </items>
+            </Menu>
+            <Menu fx:id="MenuBar_Cars" text="_Авто">
+              <items>
+                  <MenuItem onAction="#MenuBar_Cars_OpenWindow_OnAction" text="О_ткрыть окно авто">
+                     <accelerator>
+                        <KeyCodeCombination alt="DOWN" code="Y" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
+                <MenuItem onAction="#MenuBar_Cars_AddCar_OnAction" text="_Добавить авто" />
+              </items>
+            </Menu>
+            <Menu fx:id="MenuBar_Users" text="По_льзователи">
+              <items>
+                <MenuItem onAction="#MenuBar_Users_OpenWindow_OnAction" text="О_ткрыть окно пользователей" />
+                  <MenuItem onAction="#MenuBar_Users_AddUser_OnAction" text="_Добавить пользователя" />
+              </items>
+            </Menu>
+            <Menu fx:id="MenuBar_Helps" text="_Помощь">
+               <items>
+                <MenuItem onAction="#MenuBar_Combination_OnAction" text="О _комбинациях" visible="false">
+                     <accelerator>
+                        <KeyCodeCombination alt="DOWN" code="P" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
+                  <MenuItem onAction="#MenuBar_About_OnAction" text="О п_рограммном обеспечении">
+                     <accelerator>
+                        <KeyCodeCombination alt="DOWN" code="I" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
+               </items></Menu>
+         </menus>
+      </MenuBar>
+      <SubScene fx:id="General_Subscene" height="720.0" width="1280.0">
+        <root>
+          <Region />
+        </root>
+      </SubScene>
+   </children>
+</VBox>

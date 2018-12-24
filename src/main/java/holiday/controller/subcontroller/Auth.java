@@ -1,50 +1,51 @@
-package holiday.controller;
+package holiday.controller.subcontroller;
 
 import holiday.Singleton;
 import io.swagger.client.ApiCallback;
-import io.swagger.client.ApiClient;
 import io.swagger.client.ApiException;
 import io.swagger.client.api.SecurityApi;
 import io.swagger.client.model.LoginDetails;
 import io.swagger.client.model.PostLoginDetails;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
+import java.net.URL;
 import java.util.List;
 import java.util.Map;
+import java.util.ResourceBundle;
 
-public class Auth {
+public class Auth implements Initializable {
     public Button AuthButtonAuth;
     public Label Auth_Label_Output;
     public PasswordField Auth_TextField_Password;
     public TextField Auth_TextField_Login;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+    }
 
     public void AuthButtonAuth_Clicked(MouseEvent mouseEvent) {
         OnClicked();
     }
 
     private void SetNewOutputMessage(final String message) {
-        Platform.runLater(new Runnable(){
-            @Override
-            public void run() {
-                Auth_Label_Output.setVisible(true);
-                Auth_Label_Output.setText(message);
-            }
+        Platform.runLater(() -> {
+            Auth_Label_Output.setVisible(true);
+            Auth_Label_Output.setText(message);
         });
     }
 
     private void DisableOutputMessage() {
-        Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
-                Auth_Label_Output.setVisible(false);
-                Auth_Label_Output.setText("");
-            }
+        Platform.runLater(() -> {
+            Auth_Label_Output.setVisible(false);
+            Auth_Label_Output.setText("");
         });
     }
 
@@ -88,7 +89,8 @@ public class Auth {
                     if(statusCode == 200) {
                         if(!result.getRole().equals("")) {
                             Singleton.levelOfAccess = result.getRole();
-                            Singleton.singleton.LoadSceneByName("General");
+                            Singleton.singleton.loadSceneByName("General");
+                            //Platform.runLater(() -> Singleton.singleton.loadSubsceneByName("General"));
                         }
                     } else {
                         System.out.println("Auth.onSuccess statusCode is not 200");
@@ -147,7 +149,7 @@ public class Auth {
             }
         }
         if(loginDetails != null) {
-            Singleton.singleton.LoadSceneByName("General");
+            Singleton.singleton.loadSceneByName("General");
         }
         */
     }

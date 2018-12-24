@@ -56,7 +56,7 @@ public class SubtasksApi {
 
     /**
      * Build call for tasksTaskIdSubtaskIdGet
-     * @param taskId The Task Id (required)
+     * @param taskId The Tasks Id (required)
      * @param subtaskId The Subtask Id (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
@@ -129,7 +129,7 @@ public class SubtasksApi {
     /**
      * 
      * Read subtask by task ID and subtask ID
-     * @param taskId The Task Id (required)
+     * @param taskId The Tasks Id (required)
      * @param subtaskId The Subtask Id (required)
      * @return SubtaskDetails
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -142,7 +142,7 @@ public class SubtasksApi {
     /**
      * 
      * Read subtask by task ID and subtask ID
-     * @param taskId The Task Id (required)
+     * @param taskId The Tasks Id (required)
      * @param subtaskId The Subtask Id (required)
      * @return ApiResponse&lt;SubtaskDetails&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -156,7 +156,7 @@ public class SubtasksApi {
     /**
      *  (asynchronously)
      * Read subtask by task ID and subtask ID
-     * @param taskId The Task Id (required)
+     * @param taskId The Tasks Id (required)
      * @param subtaskId The Subtask Id (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
